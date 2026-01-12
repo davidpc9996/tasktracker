@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Life Quest</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="icon-192.png">
+</head>
+<body class="light-theme">
+    <div id="app">
+        <!-- Header: Gamification Status -->
+        <header id="main-header">
+            <div class="user-info">
+                <div class="level-badge" id="level-display">Lvl 1</div>
+                <div class="xp-container">
+                    <div class="xp-bar-bg">
+                        <div class="xp-bar-fill" id="xp-bar" style="width: 0%"></div>
+                    </div>
+                    <span id="xp-text">0 / 100 XP</span>
+                </div>
+            </div>
+            <div class="streak-display">
+                🔥 <span id="streak-count">0</span>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="content-area">
+            <!-- Dynamic Content Injected Here -->
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav id="bottom-nav">
+            <button class="nav-btn active" data-view="dashboard" id="nav-dashboard">
+                <span class="icon">🏠</span>
+                <span data-i18n="nav_home">Home</span>
+            </button>
+            <button class="nav-btn" data-view="tasks" id="nav-tasks">
+                <span class="icon">✅</span>
+                <span data-i18n="nav_tasks">Tasks</span>
+            </button>
+            <button class="nav-btn" data-view="money" id="nav-money">
+                <span class="icon">💰</span>
+                <span data-i18n="nav_money">Money</span>
+            </button>
+            <button class="nav-btn" data-view="settings" id="nav-settings">
+                <span class="icon">⚙️</span>
+                <span data-i18n="nav_settings">Settings</span>
+            </button>
+        </nav>
+        
+        <!-- Toast Notification Area -->
+        <div id="toast-container"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch(err => console.error('SW Registration Failed', err));
+        }
+    </script>
+</body>
+</html>
